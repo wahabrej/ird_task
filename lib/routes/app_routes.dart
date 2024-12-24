@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:ird_task/features/home/presentation/screen/home_screen.dart';
-import 'package:ird_task/features/home/presentation/widgets/card_detail_widget.dart';
+import 'package:ird_task/features/home/presentation/screen/card_detail_widget.dart';
 
 class AppRoute {
   static String homeScreen = "/homeScreen";

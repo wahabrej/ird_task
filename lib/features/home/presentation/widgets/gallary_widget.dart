@@ -3,17 +3,16 @@ import 'package:flutter/material.dart';
 class GallerySection extends StatelessWidget {
   final List<String> imageUrls; // List of image URLs
 
-  const GallerySection({Key? key, required this.imageUrls}) : super(key: key);
+  const GallerySection({super.key, required this.imageUrls});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100, // Height of the gallery row
+      height: 100, 
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: imageUrls.length,
         itemBuilder: (context, index) {
-          // Check if it's the last image
           final isLast = index == imageUrls.length - 1;
 
           return Padding(
@@ -22,7 +21,6 @@ class GallerySection extends StatelessWidget {
             ),
             child: Stack(
               children: [
-                // Image container with rounded corners
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12.0),
                   child: Image.network(
@@ -33,7 +31,6 @@ class GallerySection extends StatelessWidget {
                   ),
                 ),
 
-                // Overlay for the last image
                 if (isLast)
                   Container(
                     width: 100,
@@ -44,7 +41,7 @@ class GallerySection extends StatelessWidget {
                     ),
                     child: Center(
                       child: Text(
-                        '+${imageUrls.length - index}', // Display remaining count
+                        '+${imageUrls.length - index}', 
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 20,

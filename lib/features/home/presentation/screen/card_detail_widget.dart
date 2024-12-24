@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ird_task/core/utils/constants/image_path.dart';
 import 'package:ird_task/features/home/presentation/widgets/gallary_widget.dart';
-import 'package:ird_task/features/home/presentation/widgets/map_widget.dart';
 
 class DetailScreen extends StatelessWidget {
   final Map<String, dynamic>? cardDetails;
 
-  DetailScreen({Key? key, this.cardDetails}) : super(key: key);
+  DetailScreen({super.key, this.cardDetails});
   final List<String> sampleImages = [
     ImagePath.house4,
     ImagePath.house5,
@@ -29,11 +28,10 @@ class DetailScreen extends StatelessWidget {
                   Stack(
                     children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.all(
+                        borderRadius: const BorderRadius.all(
                             Radius.circular(20)), // Apply border radius
                         child: Image.network(
-                          cardDetails?['imageUrl'] ??
-                              'https://via.placeholder.com/250',
+                          cardDetails?['imageUrl'] ?? 'none',
                           width: MediaQuery.of(context).size.width * 0.9,
                           height: 304,
                           fit: BoxFit
@@ -44,9 +42,9 @@ class DetailScreen extends StatelessWidget {
                         top: 16,
                         left: 30,
                         child: CircleAvatar(
-                          backgroundColor: Color(0xff6D8FA8),
+                          backgroundColor: const Color(0xff6D8FA8),
                           child: Transform.translate(
-                            offset: Offset(6, 0),
+                            offset: const Offset(6, 0),
                             child: IconButton(
                               icon: const Icon(Icons.arrow_back_ios,
                                   color: Colors.white),
@@ -59,7 +57,7 @@ class DetailScreen extends StatelessWidget {
                         top: 16,
                         right: 30,
                         child: CircleAvatar(
-                          backgroundColor: Color(0xff6D8FA8),
+                          backgroundColor: const Color(0xff6D8FA8),
                           child: IconButton(
                             icon: const Icon(Icons.bookmark_border,
                                 color: Colors.white),
@@ -93,10 +91,10 @@ class DetailScreen extends StatelessWidget {
                             Row(
                               children: [
                                 Container(
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                       horizontal: 8, vertical: 3),
                                   decoration: BoxDecoration(
-                                      color: Color(0xff3D423C),
+                                      color: const Color(0xff3D423C),
                                       borderRadius: BorderRadius.circular(6)),
                                   child: Image.asset(
                                     ImagePath.bed,
@@ -114,12 +112,12 @@ class DetailScreen extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 16),
                                 Container(
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                       horizontal: 8, vertical: 3),
                                   decoration: BoxDecoration(
-                                      color: Color(0xff3D423C),
+                                      color: const Color(0xff3D423C),
                                       borderRadius: BorderRadius.circular(6)),
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.bathtub,
                                     color: Colors.white,
                                     size: 16,
@@ -142,7 +140,6 @@ class DetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
 
-                  // Description Section
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30.0),
                     child: Column(
@@ -179,7 +176,6 @@ class DetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
 
-                  // Owner Section
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30.0),
                     child: Row(
@@ -212,9 +208,9 @@ class DetailScreen extends StatelessWidget {
                         ),
                         const Spacer(),
                         Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 7, vertical: 5),
-                          decoration: BoxDecoration(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 7, vertical: 5),
+                          decoration: const BoxDecoration(
                               color: Color(0xff0A8ED9),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(5))),
@@ -228,7 +224,7 @@ class DetailScreen extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 7, vertical: 5),
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Color(0xff0A8ED9),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(5))),
@@ -243,14 +239,12 @@ class DetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
 
-                  // Gallery Section
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: GallerySection(imageUrls: sampleImages),
                   ),
                   const SizedBox(height: 16),
 
-                  // Map Section
                   if (cardDetails!['mapImageUrl'] != null)
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -271,27 +265,23 @@ class DetailScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 23.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(20), // Add border radius here
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(
-                            20), // Ensure the image respects the border radius
+                        borderRadius: BorderRadius.circular(20),
                         child: Image.asset(
                           ImagePath.map,
-                          fit: BoxFit
-                              .cover, // You can adjust the BoxFit as needed
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),
                   ),
 
-                  // Price and Rent Now Button
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 30.0, vertical: 10),
                     child: Transform.translate(
-                      offset: Offset(1, -10),
+                      offset: const Offset(1, -10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -316,10 +306,7 @@ class DetailScreen extends StatelessWidget {
                             ],
                           ),
                           GestureDetector(
-                            onTap: () {
-                              // Your button action here
-                              print('Button Pressed!');
-                            },
+                            onTap: () {},
                             child: Container(
                               height: 43,
                               padding: const EdgeInsets.symmetric(
@@ -327,8 +314,8 @@ class DetailScreen extends StatelessWidget {
                               decoration: BoxDecoration(
                                 gradient: const LinearGradient(
                                   colors: [
-                                    Color(0xFFA0DAFB), // Purple
-                                    Color(0xFF0A8ED9), // Blue
+                                    Color(0xFFA0DAFB),
+                                    Color(0xFF0A8ED9),
                                   ],
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
@@ -340,8 +327,7 @@ class DetailScreen extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors
-                                      .white, // Ensure text color contrasts with gradient
+                                  color: Colors.white,
                                 ),
                               ),
                             ),

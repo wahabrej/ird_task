@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 import 'package:ird_task/core/common/styles/global_text_style.dart';
 import 'package:ird_task/core/utils/constants/image_path.dart';
 import 'package:ird_task/features/home/controller/home_controller.dart';
-import 'package:ird_task/features/home/presentation/widgets/card_detail_widget.dart';
+import 'package:ird_task/features/home/model/home_model.dart';
+import 'package:ird_task/features/home/presentation/screen/card_detail_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   final HomeController controller = Get.put(HomeController());
@@ -49,32 +50,30 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24,
                 ),
-                // SectionTitle(title: 'Near from you',),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     vertical: 16.0,
                   ),
                   child: SizedBox(
-                    height: 220, // Adjust height to fit your card
+                    height: 220, 
                     child: Obx(
                       () => ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: controller
-                            .cardData.length, // Use the correct property name
+                            .cardData.length, 
                         itemBuilder: (context, index) {
                           final card = controller.cardData[index];
                           return GestureDetector(
                             onTap: () {
-                              // Navigate to the Card Detail Page
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => DetailScreen(
                                     cardDetails:
-                                        card, // Passing the selected card data
+                                        card, 
                                   ),
                                 ),
                               );
@@ -96,14 +95,14 @@ class HomeScreen extends StatelessWidget {
                       Text(
                         "Best for you",
                         style: getTextStyle(
-                            color: Color(0xff000000),
+                            color: const Color(0xff000000),
                             fontSize: 16,
                             fontWeight: FontWeight.w500),
                       ),
                       Text(
                         "See More",
                         style: getTextStyle(
-                            color: Color(0xff858585),
+                            color: const Color(0xff858585),
                             fontSize: 12,
                             fontWeight: FontWeight.w400),
                       ),
@@ -152,11 +151,11 @@ class HomeScreen extends StatelessWidget {
             _buildDrawerItem(Icons.home, "Home", isSelected: true),
             _buildDrawerItem(Icons.person, "Profile"),
             _buildDrawerItem(Icons.location_on, "Nearby"),
-            SizedBox(width: 200, child: Divider()),
+            const SizedBox(width: 200, child: Divider()),
             _buildDrawerItem(Icons.bookmark, "Bookmark"),
             _buildDrawerItem(Icons.notifications, "Notification"),
             _buildDrawerItem(Icons.message, "Message"),
-            SizedBox(width: 200, child: Divider()),
+            const SizedBox(width: 200, child: Divider()),
             _buildDrawerItem(Icons.settings, "Setting"),
             _buildDrawerItem(Icons.help, "Help"),
             _buildDrawerItem(Icons.logout, "Logout"),
@@ -315,7 +314,7 @@ class HomeScreen extends StatelessWidget {
                   labelStyle: TextStyle(
                     color: isSelected ? Colors.white : const Color(0xff858585),
                   ),
-                  side: BorderSide.none, // Removes the default border
+                  side: BorderSide.none, 
                 ),
               ),
             );
@@ -325,7 +324,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCourseCard(TopCourse course) {
+  Widget _buildCourseCard(Topdata course) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 12.0),
       child: ListTile(
@@ -352,7 +351,7 @@ class HomeScreen extends StatelessWidget {
             Text(
               '${course.location} / year',
               style: getTextStyle(
-                  color: Color(0xff0A8ED9),
+                  color: const Color(0xff0A8ED9),
                   fontSize: 12,
                   fontWeight: FontWeight.w400),
             ),
@@ -370,7 +369,7 @@ class HomeScreen extends StatelessWidget {
                     Text(
                       '${course.nobedroom} Bedroom',
                       style: getTextStyle(
-                          color: Color(0xff858585),
+                          color: const Color(0xff858585),
                           fontSize: 12,
                           fontWeight: FontWeight.w400),
                     ),
@@ -385,7 +384,7 @@ class HomeScreen extends StatelessWidget {
                     Text(
                       '${course.nobathroom} Bathroom',
                       style: getTextStyle(
-                          color: Color(0xff858585),
+                          color: const Color(0xff858585),
                           fontSize: 12,
                           fontWeight: FontWeight.w400),
                     ),
@@ -401,9 +400,9 @@ class HomeScreen extends StatelessWidget {
 
   Widget _buildCard(Map<String, String> card) {
     return Container(
-      margin: EdgeInsets.only(right: 20, left: 10),
-      width: 200, // Card width
-      height: 250, // Card height
+      margin:const EdgeInsets.only(right: 20, left: 10),
+      width: 200,
+      height: 250, 
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
       ),
@@ -411,17 +410,15 @@ class HomeScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.0),
         child: Stack(
           children: [
-            // Background Image
             SizedBox(
-              width: 200, // Match the container width
-              height: 250, // Match the container height
+              width: 200, 
+              height: 250, 
               child: Image.network(
                 card["imageUrl"]!,
-                fit: BoxFit.fill, // Ensure image fits inside the card
+                fit: BoxFit.fill,
               ),
             ),
 
-            // Distance Indicator (Positioned Top-Right)
             Positioned(
               top: 12,
               right: 14,
@@ -429,7 +426,7 @@ class HomeScreen extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 6.0, vertical: 4.0),
                 decoration: BoxDecoration(
-                  color: Color(0xff719AB7),
+                  color:const Color(0xff719AB7),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 child: Row(
@@ -446,7 +443,6 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
 
-            // Title and Location Text (Positioned Bottom)
             Positioned(
               bottom: 30,
               left: 20,

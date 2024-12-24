@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:ird_task/core/utils/constants/image_path.dart';
+import 'package:ird_task/features/home/model/home_model.dart';
 
 class HomeController extends GetxController {
   var topics = <String>[
@@ -51,20 +52,20 @@ class HomeController extends GetxController {
       "imageUrl": ImagePath.house1,
     },
   ].obs;
-  final RxList<TopCourse> topCourses = <TopCourse>[].obs;
+  final RxList<Topdata> topCourses = <Topdata>[].obs;
 
   @override
   void onInit() {
     super.onInit();
-    fetchTopCourses();
+    fetchTopdata();
   }
 
   Future<void> refreshData() async {
-    fetchTopCourses();
+    fetchTopdata();
   }
 
-  void fetchTopCourses() {
-    var topCourseData = [
+  void fetchTopdata() {
+    var fetchTopdata = [
       {
         "title": "Orchard House",
         "location": "Rp 2.500",
@@ -116,35 +117,6 @@ class HomeController extends GetxController {
     ];
 
     topCourses.value =
-        topCourseData.map((data) => TopCourse.fromJson(data)).toList();
-  }
-}
-
-class TopCourse {
-  final String title;
-  final String location;
-  final String distance;
-  final String imageUrl;
-  final String nobedroom;
-  final String nobathroom;
-
-  TopCourse({
-    required this.title,
-    required this.location,
-    required this.distance,
-    required this.imageUrl,
-    required this.nobedroom,
-    required this.nobathroom,
-  });
-
-  factory TopCourse.fromJson(Map<String, dynamic> json) {
-    return TopCourse(
-      title: json['title'],
-      location: json['location'],
-      distance: json['distance'] ?? '',
-      imageUrl: json['imageUrl'],
-      nobedroom: json['nobedroom'],
-      nobathroom: json['nobathroom'],
-    );
+        fetchTopdata.map((data) => Topdata.fromJson(data)).toList();
   }
 }
